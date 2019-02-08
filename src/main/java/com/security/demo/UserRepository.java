@@ -3,11 +3,9 @@ package com.security.demo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class UserRepository {
     private final Connection connection;
@@ -17,8 +15,8 @@ public class UserRepository {
     }
 
     public void createUser(String username, String password) throws Exception {
-        final String query = "insert into users values (?, ?, ?)";
-        final PreparedStatement stmt = connection.prepareStatement(query);
+        String query = "insert into users values (?, ?, ?)";
+        PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, username);
         stmt.setString(2, password);
         stmt.setString(3, "maths");
@@ -26,8 +24,8 @@ public class UserRepository {
     }
 
     public void createUser(String username, String password, String areaOfInterest) throws Exception {
-        final String query = "insert into users values (?, ?, ?)";
-        final PreparedStatement stmt = connection.prepareStatement(query);
+        String query = "insert into users values (?, ?, ?)";
+        PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, username);
         stmt.setString(2, password);
         stmt.setString(3, areaOfInterest);
@@ -35,8 +33,8 @@ public class UserRepository {
     }
 
     public int getUserCount() throws Exception {
-        final String userCountQuery = "select count(*) as user_count from users";
-        final ResultSet resultSet = connection.createStatement().executeQuery(userCountQuery);
+        String userCountQuery = "select count(*) as user_count from users";
+        ResultSet resultSet = connection.createStatement().executeQuery(userCountQuery);
 
         resultSet.next();
 
@@ -44,8 +42,8 @@ public class UserRepository {
     }
 
     public List<User> getUsersInterestedIn(String areaOfInterest) throws Exception {
-        final String query = "select * from users where area_of_interest = '" + areaOfInterest + "'";
-        final ResultSet resultSet = connection.createStatement().executeQuery(query);
+        String query = "select * from users where area_of_interest = '" + areaOfInterest + "'";
+        ResultSet resultSet = connection.createStatement().executeQuery(query);
         List<User> userList = new ArrayList<User>();
 
         while(resultSet.next()) {
@@ -55,9 +53,9 @@ public class UserRepository {
     }
 
     public Boolean loginUser(String userName, String password) throws SQLException {
-        final String query = "select * from users where username = '" + userName + "' and password = '" + password + "'";
+        String query = "select * from users where username = '" + userName + "' and password = '" + password + "'";
 
-        final ResultSet resultSet = connection.createStatement().executeQuery(query);
+        ResultSet resultSet = connection.createStatement().executeQuery(query);
 
         if (resultSet.next()) {
             return true;

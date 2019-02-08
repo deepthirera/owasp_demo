@@ -1,0 +1,3 @@
+To run spotbugs task
+
+./gradlew spotbugsMain --scan
