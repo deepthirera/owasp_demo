@@ -12,6 +12,9 @@ public class UserRepository {
 
     public UserRepository(Connection connection) {
         this.connection = connection;
+        String aws_secret_access_key = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY";
+        String aws_session_token = "AQoEXAMPLEH4aoAH0gNCAPyJxz4BlCFFxWNE1OPTgk5TthT+FvwqnKwRcOIfrRh3c/LTo6UDdyJwOOvEVPvLXCrrrUtdnniCEXAMPLE/IvU1dYUg2RVAJBanLiHb4IgRmpRV3zrkuWJOgQs8IZZaIv2BXIa2R4Olgk";
+        String ca_bundle = "dev/apps/ca-certs/cabundle-2019mar05.pem";
     }
 
     public void createUser(String username, String password) throws Exception {
