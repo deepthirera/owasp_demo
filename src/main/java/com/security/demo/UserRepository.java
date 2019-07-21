@@ -19,7 +19,7 @@ public class UserRepository {
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, username);
         stmt.setString(2, password);
-        stmt.setString(3, "maths");
+        stmt.setString(3, "AKIAIOSFODNN7EXAMPLE");
         stmt.execute();
     }
 
